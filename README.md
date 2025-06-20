@@ -31,7 +31,9 @@ Edit the `main.py` file.
 
 You can change:
 
-- `USES_AUTHENTICATION`: define the behaviour of the server. if set to `True`, you'll need to authenticate with a valid user:password combination.
+- `HOST`: define the ip to bind to. common values are `localhost` or `127.0.0.1` to only open the API to localhost, or `0.0.0.0` to bind on all interfaces
+- `PORT`: define the port to bind to
+- `USES_AUTHENTICATION`: if set to `True`, you'll need to authenticate with a valid user:password combination.
 - `USERS`: define the users that can authenticate.
 - `BACKEND`: define the used backend. Note: for now, only `dbus` is available. You can add more on the `core/backends/` directory, and by adding them to the `AVAILABLE_BACKENDS` variable, found on the `core/web_server.py` file.
 - `VERSION`: version number shown on swagger
