@@ -6,7 +6,9 @@
 #
 ##############
 
+
 import dbus
+
 from .backend import SpotifyAPIBackend
 
 
@@ -258,3 +260,22 @@ class DBusSpotifyAPIBackend(SpotifyAPIBackend):
         except dbus.DBusException as e:
             return {"status": False, "error": str(e)}
         return {"status": True, "playing": playing}
+
+    def resync(self) -> dict:
+        try:
+            self.dbus = dbus.SessionBus()
+            self.proxy = self.dbus.get_object(
+                "org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2"
+            )
+            self.root_interface = dbus.Interface(
+                self.proxy, dbus_interface="org.mpris.MediaPlayer2"
+            )
+            self.player_interface = dbus.Interface(
+                self.proxy, dbus_interface="org.mpris.MediaPlayer2.Player"
+            )
+            self.properties_interface = dbus.Interface(
+                self.proxy, dbus_interface="org.freedesktop.DBus.Properties"
+            )
+        except Exception as e:
+            return {"status": False, "error": f"{e.__class__}: {e}"}
+        return {"status": True}

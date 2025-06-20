@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+
+##############
+#
+#     @
+#       @
+#   @ @ @
+#
+##############
+
+
 from core import make_app
 
 USES_AUTHENTICATION = False

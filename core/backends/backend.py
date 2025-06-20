@@ -105,3 +105,8 @@ class SpotifyAPIBackend:
     # Output: {"playing": bool}
     def get_playing(self) -> dict:
         raise NotImplementedError("get_playing is not implemented !")
+
+    # Input: None
+    # Output: {}
+    def resync(self) -> dict:
+        raise NotImplementedError("resync is not implemented !")
